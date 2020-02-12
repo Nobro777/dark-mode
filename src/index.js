@@ -9,6 +9,12 @@ import "./styles.scss";
 
 const App = () => {
   const [coinData, setCoinData] = useState([]);
+  const [condition, setCondition] = useState(false);
+  
+  const handleClick = () => {
+    setCondition({
+      condition
+    });}
 
   useEffect(() => {
     axios
@@ -19,7 +25,8 @@ const App = () => {
       .catch(err => console.log(err));
   }, []);
   return (
-    <div className="App">
+    <div className= {`${condition} ? "button toggled" : "button"`}
+    >
       <Navbar />
       <Charts coinData={coinData} />
     </div>
